@@ -138,6 +138,10 @@ module ActiveScaffold
       @active_scaffold_overrides.unshift path
     end
 
+    def active_scaffold_override_paths
+      @active_scaffold_override_paths ||= ActionView::PathSet.new(@active_scaffold_overrides) unless @active_scaffold_overrides.blank?
+    end
+
     def active_scaffold_paths
       return @active_scaffold_paths unless @active_scaffold_paths.nil?
 

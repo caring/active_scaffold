@@ -242,7 +242,7 @@ module ActiveScaffold
 
       # the naming convention for overriding form fields with partials
       def override_form_field_partial(column)
-        "#{column.name}_form_column"
+        "#{controller.class.controller_path}/#{column.name}_form_column"
       end
 
       def override_form_field?(column)
