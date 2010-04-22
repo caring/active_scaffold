@@ -215,7 +215,7 @@ module ActiveScaffold
       
       def cache_association(value, column)
         # we are not using eager loading, cache firsts records in order not to query the database in a future
-        unless value.loaded?
+        if value.respond_to?(:loaded?) && !value.loaded?
           # load at least one record, is needed for column_empty? and checking permissions
           if column.associated_limit.nil?
             Rails.logger.warn "ActiveScaffold: Enable eager loading for #{column.name} association to reduce SQL queries"
